@@ -17,13 +17,13 @@ int main()
 
 void trainAndSave(){
 
-    Dataset dataset("./../lightnet-ml/data/iris_flowers.csv", true);
+    Dataset dataset("./../lightnet-ml/data/emg_features1.csv", true);
     dataset.scale();
 
-    Dataset testData = dataset.splitTestData(5);
+    Dataset testData = dataset.splitTestData(10);
 
     NNClassifier net({dataset.getInputCount(), 10, dataset.getUniqueTargetCount()}, dataset);
-    net.train(1000);
+    net.train(10);
 
     std::vector<NNClassifier::Prediction> predictions = net.predict(testData);
 
