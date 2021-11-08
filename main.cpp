@@ -17,7 +17,7 @@ int main()
 
 void trainAndSave(){
 
-    Dataset dataset("D:/GitHub/lightnet-ml/data/iris_flowers.csv", true);
+    Dataset dataset("./../lightnet-ml/data/iris_flowers.csv", true);
     dataset.scale();
 
     Dataset testData = dataset.splitTestData(5);
@@ -31,7 +31,7 @@ void trainAndSave(){
         cout << "Predicted: " << prediction.predictedEncodedTarget << " Actual: " << prediction.actualEncodedTarget << " Conf: " << prediction.confidence << endl;
     }
 
-    if(net.save("D:/GitHub/lightnet-ml/data/model.json")){
+    if(net.save("./../lightnet-ml/data/model.json")){
         std::cout << "saved!" << std::endl;
     }else {
         std::cout << "failed to save!" << std::endl;
@@ -41,12 +41,12 @@ void trainAndSave(){
 
 void loadAndPredict(){
 
-    Dataset dataset("D:/GitHub/lightnet-ml/data/iris_flowers.csv", true);
+    Dataset dataset("./../lightnet-ml/data/iris_flowers.csv", true);
     dataset.scale();
 
     Dataset testData = dataset.splitTestData(5);
 
-    NNClassifier net = NNClassifier::loadModel("D:/GitHub/lightnet-ml/data/model.json");
+    NNClassifier net = NNClassifier::loadModel("./../lightnet-ml/data/model.json");
 
     std::vector<NNClassifier::Prediction> predictions = net.predict(testData);
 
